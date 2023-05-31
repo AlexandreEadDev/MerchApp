@@ -2,7 +2,7 @@
 
 This is a merch app built using React, Node.js, and Express. It is designed to showcase various shoe products. The app consists of two sides: the client and the server.
 
-### Client
+## Client
 
 The client side of the app is responsible for rendering the user interface and interacting with the server to fetch data. It utilizes the following technologies and features:
 
@@ -36,7 +36,7 @@ To run the client side of the app, follow these steps:
 2. Start the development server using `npm start`.
 3. Access the app in your browser at `http://localhost:3000`.
 
-### Server
+## Server
 
 The server side of the app handles data storage, authentication, and the API for interacting with the client. It utilizes the following technologies and features:
 
