@@ -58,7 +58,7 @@ The server includes the following routes:
 The server uses a MongoDB database to store app data. To configure the app, follow these steps:
 
 1. Create a `.env` file in the root directory of the server.
-2. Add the required environment variables, such as the MongoDB connection URI and PayPal client ID.
+2. Add the required environment variables, such as the MongoDB connection URL and PayPal client ID.
 -MONGODB_URL=<your_mongodb_url>
 -PAYPAL_CLIENT_ID=<your_paypal_client_id>
 
