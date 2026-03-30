@@ -1,12 +1,12 @@
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-import { connectMongoose } from "@/server/db/mongoose";
-import Product from "@/server/models/Product";
 import { errorJson, json } from "../_utils/http";
 
 export async function GET(request) {
   try {
+    const { connectMongoose } = await import("@/server/db/mongoose");
+    const { default: Product } = await import("@/server/models/Product");
     await connectMongoose();
 
     const { searchParams } = new URL(request.url);
@@ -50,7 +50,7 @@ export async function GET(request) {
 
     return json({ products, page, pages: Math.ceil(count / pageSize) });
   } catch (e) {
-    return errorJson(e?.message || "Server error", 500);
+    return errorJson(e?.message || "Server error", e?.status || 500);
   }
 }
 

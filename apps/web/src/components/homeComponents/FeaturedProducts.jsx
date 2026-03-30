@@ -26,7 +26,7 @@ export default function FeaturedProducts() {
           data = JSON.parse(raw);
         } catch {
           throw new Error(
-            "API returned non-JSON. In production this usually means /api/products returned an HTML error page (500/404). Open /api/products in the browser to see the real error."
+            `API returned non-JSON (status ${res.status}). In production this usually means /api/products returned an HTML error page (500/404). Open /api/products (or /api/health) in the browser to see the real error.`
           );
         }
         if (!res.ok) throw new Error(data?.message || "Failed to load products");
