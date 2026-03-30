@@ -1,13 +1,18 @@
+const path = require("path");
+
+const repoRoot = path.join(__dirname, "../..");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  outputFileTracingRoot: __dirname,
-  // Mongoose must be resolvable in serverless; dynamic imports can skip tracing.
+  outputFileTracingRoot: repoRoot,
   serverExternalPackages: ["mongoose"],
   outputFileTracingIncludes: {
     "/**": [
       "./node_modules/mongoose/**/*",
       "./node_modules/mongodb/**/*",
+      "./apps/web/node_modules/mongoose/**/*",
+      "./apps/web/node_modules/mongodb/**/*",
     ],
   },
   images: {
@@ -21,4 +26,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
