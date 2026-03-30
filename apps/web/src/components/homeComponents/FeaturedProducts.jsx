@@ -17,9 +17,18 @@ export default function FeaturedProducts() {
       try {
         setLoading(true);
         setError("");
-        const res = await fetch("/api/products?pageNumber=1", { cache: "no-store" });
+        const res = await fetch("/api/products?pageNumber=1", {
+          cache: "no-store",
+        });
         const raw = await res.text();
-        const data = JSON.parse(raw);
+        let data;
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          throw new Error(
+            "API returned non-JSON. In production this usually means /api/products returned an HTML error page (500/404). Open /api/products in the browser to see the real error."
+          );
+        }
         if (!res.ok) throw new Error(data?.message || "Failed to load products");
         if (!mounted) return;
         setProducts((data.products || []).slice(0, 6));
