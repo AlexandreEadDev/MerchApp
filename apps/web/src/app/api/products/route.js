@@ -1,12 +1,12 @@
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+import Product from "@/server/models/Product";
+import { connectMongoose } from "@/server/db/mongoose";
 import { errorJson, json } from "../_utils/http";
 
 export async function GET(request) {
   try {
-    const { connectMongoose } = await import("@/server/db/mongoose");
-    const { default: Product } = await import("@/server/models/Product");
     await connectMongoose();
 
     const { searchParams } = new URL(request.url);

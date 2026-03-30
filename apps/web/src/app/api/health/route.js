@@ -1,11 +1,11 @@
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+import { connectMongoose } from "@/server/db/mongoose";
 import { errorJson, json } from "../_utils/http";
 
 export async function GET() {
   try {
-    const { connectMongoose } = await import("@/server/db/mongoose");
     await connectMongoose();
     return json({ ok: true, mongo: "connected" });
   } catch (e) {

@@ -2,6 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: __dirname,
+  // Mongoose must be resolvable in serverless; dynamic imports can skip tracing.
+  serverExternalPackages: ["mongoose"],
+  outputFileTracingIncludes: {
+    "/**": [
+      "./node_modules/mongoose/**/*",
+      "./node_modules/mongodb/**/*",
+    ],
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "upload.wikimedia.org" },
